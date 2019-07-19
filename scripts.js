@@ -16,21 +16,21 @@ function containsCategory(input, category) {
             count++;
           } 
         }}
-     Logger.log('count:' + count);
-     // to do: add in way to mark (and read) portions of an hour
-     if (category === 'READ') {
-        SpreadsheetApp.getActiveSheet().getRange('H10').setValue(count); 
-    }
-      if (category === 'DISCUSS') {
-        SpreadsheetApp.getActiveSheet().getRange('H11').setValue(count); 
-    }
-      if (category === 'PRACTICE') {
-        SpreadsheetApp.getActiveSheet().getRange('H12').setValue(count); 
-    }
-      if (category === 'SUBMIT') {
-        SpreadsheetApp.getActiveSheet().getRange('H13').setValue(count); 
-    }
-  }
+        Logger.log('count:' + count);
+        // to do: add in ways to count portions of an hour
+        if (category === 'READ') {
+           SpreadsheetApp.getActiveSheet().getRange(input[0] + '26').setValue(count); 
+       }
+         if (category === 'DISCUSS') {
+           SpreadsheetApp.getActiveSheet().getRange(input[0] + '27').setValue(count); 
+       }
+         if (category === 'PRACTICE') {
+           SpreadsheetApp.getActiveSheet().getRange(input[0] + '28').setValue(count); 
+       }
+         if (category === 'ASSIGNMENT') {
+           SpreadsheetApp.getActiveSheet().getRange(input[0] + '29').setValue(count); 
+       }
+     }
   
   
   function onOpen(e){
