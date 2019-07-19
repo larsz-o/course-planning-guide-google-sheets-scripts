@@ -44,10 +44,10 @@ function containsCategory(input, category) {
   function checkAll(){
     var alph = "BCDEFGHIJK";
 	   for (var i = 0; i< alph.length; i++) {
-            containsCategory(alph[i]+'5:'+ alph[i]+'20', 'READ');
-            containsCategory(alph[i]+'5:'+ alph[i]+'20', 'DISCUSS');
-            containsCategory(alph[i]+'5:'+ alph[i]+'20', 'PRACTICE');
-            containsCategory(alph[i]+'5:'+ alph[i]+'20', 'ASSIGNMENT');
+            containsCategory(alph[i]+'5:'+ alph[i]+'24', 'READ');
+            containsCategory(alph[i]+'5:'+ alph[i]+'24', 'DISCUSS');
+            containsCategory(alph[i]+'5:'+ alph[i]+'24', 'PRACTICE');
+            containsCategory(alph[i]+'5:'+ alph[i]+'24', 'ASSIGNMENT');
        }
   }
   
