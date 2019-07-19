@@ -34,15 +34,20 @@ function containsCategory(input, category) {
   
   
   function onOpen(e){
-    containsCategory("F5:F20", "PRACTICE");
-    containsCategory("F5:F20", "READ");
-    containsCategory("F5:F20", "SUBMIT");
-      containsCategory("F5:F20", "DISCUSS");
+    checkAll();
   }
   
   function onEdit(e){
-     containsCategory("F5:F20", "PRACTICE");
-     containsCategory("F5:F20", "READ");
-     containsCategory("F5:F20", "SUBMIT");
-      containsCategory("F5:F20", "DISCUSS");
+    checkAll();
   }
+
+  function checkAll(){
+    var alph = "BCDEFGHIJK";
+	   for (var i = 0; i< alph.length; i++) {
+            containsCategory(alph[i]+'5:'+ alph[i]+'20', 'READ');
+            containsCategory(alph[i]+'5:'+ alph[i]+'20', 'DISCUSS');
+            containsCategory(alph[i]+'5:'+ alph[i]+'20', 'PRACTICE');
+            containsCategory(alph[i]+'5:'+ alph[i]+'20', 'ASSIGNMENT');
+       }
+  }
+  
