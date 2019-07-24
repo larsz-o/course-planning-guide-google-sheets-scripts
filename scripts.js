@@ -35,10 +35,6 @@ function containsCategory(input, category) {
     }
 }
 
-// when someone opens the spreadsheet, we should check out counts
-function onOpen(e) {
-    checkAll();
-}
 // when someone makes an edit to the spreadsheet, we should update our counts
 function onEdit(e) {
     checkAll();
