@@ -4,7 +4,10 @@ This is a repository of some useful scripts that I'm creating to use in Google S
 We want faculty to be able to use Google Sheets to calculate how much time they are asking students to spend in various categories of activities in class over the course of a term.  These scripts will read various categories and count up the time commitments dynamically. 
 
 # screenshots
+## view of the table
 ![table view](https://github.com/larsz-o/course-planning-guide-google-sheets-scripts/blob/master/screenshots/table.png)
+
+## some of the calculations we can do
 ![calculations](https://github.com/larsz-o/course-planning-guide-google-sheets-scripts/blob/master/screenshots/calcs.png)
 
 # built in
