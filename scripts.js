@@ -4,7 +4,9 @@ var discuss = 0;
 var practice = 0; 
 var assignment = 0; 
 var watch = 0; 
+var collab = 0; 
 var learningTotal = 0;
+var discussCollabTotal = 0;
 
 function containsCategory(input, category) {
     // the text variable holds the value of cells in our current spreadsheet. the input argument represents one full column in A1 notation
@@ -41,8 +43,14 @@ function containsCategory(input, category) {
         SpreadsheetApp.getActiveSheet().getRange(input[0] + '26').setValue(learningTotal);
     }
     if (category === 'DISCUSS') {
-        SpreadsheetApp.getActiveSheet().getRange(input[0] + '27').setValue(count);
         discuss = count; 
+        discussCollabTotal = discuss + collab; 
+        SpreadsheetApp.getActiveSheet().getRange(input[0] + '27').setValue(discussCollabTotal);
+    }
+    if (category === 'COLLABORATE') {
+        collab = count; 
+        discussCollabTotal = discuss + collab; 
+        SpreadsheetApp.getActiveSheet().getRange(input[0] + '27').setValue(discussCollabTotal);
     }
     if (category === 'PRACTICE') {
         SpreadsheetApp.getActiveSheet().getRange(input[0] + '28').setValue(count);
@@ -65,6 +73,7 @@ function checkAll() {
     for (var i = 0; i < alph.length; i++) {
         containsCategory(alph[i] + '5:' + alph[i] + '24', 'READ');
         containsCategory(alph[i] + '5:' + alph[i] + '24', 'DISCUSS');
+        containsCategory(alph[i] + '5:' + alph[i] + '24', 'COLLABORATE');
         containsCategory(alph[i] + '5:' + alph[i] + '24', 'PRACTICE');
         containsCategory(alph[i] + '5:' + alph[i] + '24', 'ASSIGNMENT');
     }
