@@ -1,3 +1,11 @@
+
+var read = 0; 
+var discuss = 0; 
+var practice = 0; 
+var assignment = 0; 
+var watch = 0; 
+var learningTotal = 0;
+
 function containsCategory(input, category) {
     // the text variable holds the value of cells in our current spreadsheet. the input argument represents one full column in A1 notation
     var text = SpreadsheetApp.getActiveSheet().getRange(input).getValues();
@@ -19,19 +27,30 @@ function containsCategory(input, category) {
         }
     }
     Logger.log('count:' + count);
-    // to do: add in ways to count portions of an hour
     // depending on what the keyword is, we should put our count in a certain row. we take the first character of our input argument (the letter of the column) to figure out which column we should add our count to
     if (category === 'READ') {
-        SpreadsheetApp.getActiveSheet().getRange(input[0] + '26').setValue(count);
+        read = count; 
+        learningTotal = read + watch; 
+        SpreadsheetApp.getActiveSheet().getRange(input[0] + '26').setValue(learningTotal);
+    }
+    if (category === 'WATCH') {
+        watch = count/4; 
+        learningTotal = read + watch; 
+        // reading and watching are going to end up in the same category, but they use different keywords and different units of time. 
+        // add them together using the global scope variables so that we can get an accurate number for this combined category.
+        SpreadsheetApp.getActiveSheet().getRange(input[0] + '26').setValue(learningTotal);
     }
     if (category === 'DISCUSS') {
         SpreadsheetApp.getActiveSheet().getRange(input[0] + '27').setValue(count);
+        discuss = count; 
     }
     if (category === 'PRACTICE') {
         SpreadsheetApp.getActiveSheet().getRange(input[0] + '28').setValue(count);
+        practice = count; 
     }
     if (category === 'ASSIGNMENT') {
         SpreadsheetApp.getActiveSheet().getRange(input[0] + '29').setValue(count);
+        assignment = count; 
     }
 }
 
