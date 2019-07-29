@@ -28,7 +28,7 @@ function containsCategory(input, category) {
             }
         }
     }
-    Logger.log('count:' + count);
+
     // depending on what the keyword is, we should put our count in a certain row. we take the first character of our input argument (the letter of the column) to figure out which column we should add our count to
     if (category === 'READ') {
         read = count; 
@@ -36,6 +36,7 @@ function containsCategory(input, category) {
         SpreadsheetApp.getActiveSheet().getRange(input[0] + '26').setValue(learningTotal);
     }
     if (category === 'WATCH') {
+        //watch is a 15 minute unit, so let's divide the 1 hour standard unit by 4 to get our accurate count for the watch category
         watch = count/4; 
         learningTotal = read + watch; 
         // reading and watching are going to end up in the same category, but they use different keywords and different units of time. 
@@ -49,6 +50,8 @@ function containsCategory(input, category) {
     }
     if (category === 'COLLABORATE') {
         collab = count; 
+        // discussing and collaborating are going to end up in the same category, but they use different keywords. 
+        // add them together using the global scope variables so that we can get an accurate number for this combined category.
         discussCollabTotal = discuss + collab; 
         SpreadsheetApp.getActiveSheet().getRange(input[0] + '27').setValue(discussCollabTotal);
     }
