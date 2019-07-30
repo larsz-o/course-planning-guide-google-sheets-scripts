@@ -1,6 +1,5 @@
 var read = 0; 
 var discuss = 0; 
-var practice = 0; 
 var watch = 0; 
 var collab = 0; 
 var review = 0;
@@ -51,56 +50,59 @@ function getValues(category){
         }
     }
  // depending on what the keyword is, we should put our count in a certain row. we take the first character of our input argument (the letter of the column) to figure out which column we should add our count to
-    if (category === 'READ') {
+ switch (category){
+    case 'READ':
         read = count; 
         learningTotal = read + watch; 
         SpreadsheetApp.getActiveSheet().getRange(currentColumn + '27').setValue(learningTotal);
-    }
-    if (category === 'WATCH') {
-        //watch is a 15 minute unit, so let's divide the 1 hour standard unit by 4 to get our accurate count for the watch category
-        watch = count/4; 
-        learningTotal = read + watch; 
-        // reading and watching are going to end up in the same category, but they use different keywords and different units of time. 
-        // add them together using the global scope variables so that we can get an accurate number for this combined category.
-        SpreadsheetApp.getActiveSheet().getRange(currentColumn + '27').setValue(learningTotal);
-    }
-    if (category === 'DISCUSS') {
+        break;
+    case 'WATCH':
+         //watch is a 15 minute unit, so let's divide the 1 hour standard unit by 4 to get our accurate count for the watch category
+         watch = count/4; 
+         learningTotal = read + watch; 
+         // reading and watching are going to end up in the same category, but they use different keywords and different units of time. 
+         // add them together using the global scope variables so that we can get an accurate number for this combined category.
+         SpreadsheetApp.getActiveSheet().getRange(currentColumn + '27').setValue(learningTotal);
+         break;
+    case 'DISCUSS':
         discuss = count; 
         discussCollabTotal = discuss + collab; 
         SpreadsheetApp.getActiveSheet().getRange(currentColumn + '28').setValue(discussCollabTotal);
-    }
-    if (category === 'COLLABORATE') {
+        break;
+    case 'COLLABORATE':
         collab = count; 
         // discussing and collaborating are going to end up in the same category, but they use different keywords. 
-        // add them together using the global scope variables so that we can get an accurate number for this combined category.
+        // add them together using the global scope variables so that we can get an accurate number for this combined category.            
         discussCollabTotal = discuss + collab; 
         SpreadsheetApp.getActiveSheet().getRange(currentColumn + '28').setValue(discussCollabTotal);
-    }
-    if (category === 'PRACTICE') {
+        break;
+    case 'PRACTICE': 
         SpreadsheetApp.getActiveSheet().getRange(currentColumn + '29').setValue(count);
-        practice = count; 
-    }
-   if (category === 'REVIEW') {
+        break;
+    case 'REVIEW': 
         // reviewing, working, and submitting are going to end up in the same category, but they use different keywords. 
         // add them together using the global scope variables so that we can get an accurate number for this combined category.
         review = count/4; 
         assignmentTotal = review + work + submit; 
-        SpreadsheetApp.getActiveSheet().getRange(currentColumn + '29').setValue(assignmentTotal);
-    }
-    if (category === 'WORK') {
+        SpreadsheetApp.getActiveSheet().getRange(currentColumn + '30').setValue(assignmentTotal);
+        break;
+    case 'WORK': 
         // reviewing, working, and submitting are going to end up in the same category, but they use different keywords. 
         // add them together using the global scope variables so that we can get an accurate number for this combined category.
         work = count; 
         assignmentTotal = review + work + submit; 
         SpreadsheetApp.getActiveSheet().getRange(currentColumn + '30').setValue(assignmentTotal);
-    }
-    if (category === 'SUBMIT') {
+        break;
+    case 'SUBMIT':
         // reviewing, working, and submitting are going to end up in the same category, but they use different keywords. 
         // add them together using the global scope variables so that we can get an accurate number for this combined category.
         submit = count/4; 
         assignmentTotal = review + work + submit; 
         SpreadsheetApp.getActiveSheet().getRange(currentColumn + '30').setValue(assignmentTotal);
-    }
+        break;
+    default: 
+        return count;
+ }  
 
 }
 
