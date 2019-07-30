@@ -5,9 +5,11 @@ We want faculty to be able to use Google Sheets to calculate how much time they 
 
 # screenshots
 View of the table:
+
 ![table view](https://github.com/larsz-o/course-planning-guide-google-sheets-scripts/blob/master/screenshots/table.png)
 
 Some of the calculations we can do:
+
 ![calculations](https://github.com/larsz-o/course-planning-guide-google-sheets-scripts/blob/master/screenshots/calcs.png)
 
 # built in
