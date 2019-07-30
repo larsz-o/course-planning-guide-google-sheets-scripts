@@ -49,7 +49,7 @@ function getValues(category){
             }
         }
     }
- // depending on what the keyword is, we should put our count in a certain row. we take the first character of our input argument (the letter of the column) to figure out which column we should add our count to
+ // depending on what the keyword is, we should put our count in a certain row. 
  switch (category){
     case 'READ':
         read = count; 
@@ -100,8 +100,6 @@ function getValues(category){
         assignmentTotal = review + work + submit; 
         SpreadsheetApp.getActiveSheet().getRange(currentColumn + '30').setValue(assignmentTotal);
         break;
-    default: 
-        return count;
  }  
 
 }
