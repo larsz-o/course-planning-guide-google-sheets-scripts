@@ -13,12 +13,8 @@ var columnsArray = [{id: 2, letter: 'b'}, {id: 3, letter: 'c'}, {id: 4, letter: 
 var currentColumn = null; 
 var categories = ['READ', 'WATCH', 'DISCUSS', 'COLLABORATE', 'PRACTICE', 'REVIEW', 'WORK', 'SUBMIT'];
 
-function filterKeys(object){
-  if (object.id === 3) {
-  var letterToUse = object.letter;
-   return letterToUse;
-  }}
 
+//gets the current column's numerical value and then finds its letter value by searching through columnsArray which contains objects that match the column number with its letter value
 function getColumn(category){
   Logger.log('values: current column: ' + currentColumn + 'read:' + read + 'watch: ' + watch + 'discuss: ' + discuss + 'practice: ' + practice + 'collab: ' + collab + 'review: ' + review + 'work: ' + work + 'submit: ' + submit); 
   var column = SpreadsheetApp.getActiveSheet().getActiveCell();
@@ -28,6 +24,7 @@ function getColumn(category){
       currentColumn = columnsArray[i].letter;
     }
   }// end for loop
+   // once we know what column letter we're in, run the getValues function to get all of the text we need to analyze
   getValues(category);
 }
 function getValues(category){
@@ -118,6 +115,7 @@ function checkCurrentColumn(){
   }
 }
 
+// if someone wants to force a recalculation of all cells in our table, we should run this function which iterates through each column
 function checkAll(){
   var alphabet = 'BCDEFGHIJK';
   for (var j = 0; j < alphabet.length; j++) {
