@@ -86,7 +86,7 @@ function getValues(category){
    if (category === 'REVIEW') {
         // reviewing, working, and submitting are going to end up in the same category, but they use different keywords. 
         // add them together using the global scope variables so that we can get an accurate number for this combined category.
-        review = count; 
+        review = count/4; 
         assignmentTotal = review + work + submit; 
         SpreadsheetApp.getActiveSheet().getRange(currentColumn + '29').setValue(assignmentTotal);
     }
