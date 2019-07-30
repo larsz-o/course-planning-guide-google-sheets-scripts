@@ -45,11 +45,9 @@ function getColumn(category){
       }
    // depending on what the keyword is, we should put our count in a certain row. we take the first character of our input argument (the letter of the column) to figure out which column we should add our count to
       if (category === 'READ') {
-        Logger.log(read);
           read = count; 
           learningTotal = read + watch; 
           SpreadsheetApp.getActiveSheet().getRange(currentColumn + '26').setValue(learningTotal);
-        Logger.log(read);
       }
       if (category === 'WATCH') {
           //watch is a 15 minute unit, so let's divide the 1 hour standard unit by 4 to get our accurate count for the watch category
@@ -100,27 +98,9 @@ function getColumn(category){
     }
   
   }
-
-
-
 // when someone makes an edit to the spreadsheet, we should update our counts
 function onEdit(e) {
     checkCurrentColumn();
-}
-
-// we need to run containsCategory for each available keyword and each letter for columns B-K
-function checkAll() {
-    var alph = "BCDEFGHIJK";
-    for (var i = 0; i < alph.length; i++) {
-        containsCategory(alph[i] + '5:' + alph[i] + '24', 'READ');
-        containsCategory(alph[i] + '5:' + alph[i] + '24', 'WATCH');
-        containsCategory(alph[i] + '5:' + alph[i] + '24', 'DISCUSS');
-        containsCategory(alph[i] + '5:' + alph[i] + '24', 'COLLABORATE');
-        containsCategory(alph[i] + '5:' + alph[i] + '24', 'PRACTICE');
-        containsCategory(alph[i] + '5:' + alph[i] + '24', 'REVIEW');
-        containsCategory(alph[i] + '5:' + alph[i] + '24', 'WORK');
-        containsCategory(alph[i] + '5:' + alph[i] + '24', 'SUBMIT');
-    }
 }
 
 function checkCurrentColumn(){
